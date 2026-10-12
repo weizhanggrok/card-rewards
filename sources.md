@@ -49,3 +49,13 @@
 4. **[未核实] Discover 官网日历**：抓取时无法访问，Q4 类别依据多家媒体。
 5. **[假设] Chase 季度 5% 的计算方式**：按 Chase 新闻稿的“原有倍率 + 4%”处理（Flex 餐饮 3%+4%=7%，超市 1%+4%=5%）。超过 $1,500 后回落到原有倍率。
 6. **[假设] CSR 订希尔顿**：工具按“酒店直订”4x 计算，具体以 Chase 的商户分类为准。
+
+## 2027 Q1（1/1–3/31）— 2026-10-12 补充
+- **Chase Freedom/Flex**：超市（不含 Walmart、Target）和热门流媒体（Netflix、Disney+、Hulu、Max、Spotify、YouTube Premium/TV、Apple Music 等），5%，合并上限 $1,500，12/15/2026 开始可激活。Chase 官网日历已列出这两类。激活截止约 3/14/2027，这个日期来自 AwardWallet，Chase 官方尚未确认。
+  - https://creditcards.chase.com/cash-back-credit-cards/freedom/flex （官方日历“JAN-MAR 2027”）
+  - https://thepointsguy.com/credit-cards/activate-chase-freedom-5x-earnings/
+  - https://www.doctorofcredit.com/chase-doing-automatic-product-change-for-some-original-freedom-cardholders-to-freedom-unlimited/ （相关：原版 Freedom 自动转换）
+  - https://www.doctorofcredit.com/chase-freedom-q1-2027-categories-grocery-streaming/
+  - https://awardwallet.com/credit-cards/chase-ultimate-rewards/chase-freedom-categories/
+- **Discover it**：截至 2026-10-12 **尚未公布**，Discover 官方日历页仍无法访问。网上出现的“2027 日历”来自内容农场，只是预测，没有采用。
+- **2027 Q2 及以后**：Chase 和 Discover 均未公布。

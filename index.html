@@ -52,6 +52,11 @@ main{padding:12px;max-width:560px;margin:0 auto}
 .tog{display:flex;align-items:center;justify-content:space-between;min-height:52px;border-top:1px solid var(--line);gap:10px;font-size:15px}
 .tog input{width:26px;height:26px;flex:none}
 .close{width:100%;margin-top:16px;background:var(--acc);color:#fff;border:0;font-weight:700}
+.qbar{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.qbar label{font-size:14px;color:var(--sub);flex:none}
+.qbar select{flex:1;min-height:50px;font-size:17px;font-weight:700;border:2px solid var(--acc);border-radius:14px;padding:0 12px;background:#fff;color:var(--ink);-webkit-appearance:none;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#2563eb 50%),linear-gradient(135deg,#2563eb 50%,transparent 50%);background-position:calc(100% - 20px) 22px,calc(100% - 14px) 22px;background-size:6px 6px;background-repeat:no-repeat}
+.qinfo{background:#fff;border-radius:14px;padding:12px 14px;font-size:14px;line-height:1.55;margin-bottom:12px}
+.qinfo b{color:#1e40af}.qinfo .na{color:#92400e}
 .install{display:none;background:#fef3c7;color:#92400e;border-radius:12px;padding:10px 12px;font-size:13px;margin-bottom:12px}
 </style>
 </head>
@@ -59,19 +64,34 @@ main{padding:12px;max-width:560px;margin:0 auto}
 <header><h1>💳 刷哪张卡<small id="qlabel"></small></h1><button class="gear" id="gear" aria-label="设置">⚙️</button></header>
 <main>
   <div class="install" id="install"></div>
+  <div class="qbar"><label for="qsel">季度</label><select id="qsel" aria-label="选择季度"></select></div>
+  <div class="qinfo" id="qinfo"></div>
   <div class="tiles" id="tiles"></div>
   <div class="rec" id="rec"></div>
   <div class="list" id="list"></div>
-  <div class="foot">数据核查于 2026-10-11 · 以发卡行条款为准<br>Q4 激活：Chase 12/14 前（可追溯）· Discover 尽早（不追溯）</div>
+  <div class="foot">数据核查于 2026-10-12 · 以发卡行条款为准<br>季度类别未公布时仅按基础倍率计算</div>
 </main>
 <div class="sheet" id="sheet"><div class="panel" id="panel"></div></div>
 <script>
-/* ===== 季度数据（每季度改这里） ===== */
-const Q = {
-  label:"2026 Q4", start:"2026-10-01", end:"2026-12-31",
-  chase:{ cats:["dining","groceries"], add:4, cap:1500, by:"12/14", retro:true },      // + 红十字会捐款
-  discover:{ cats:["dining","entertainment","utilities"], rate:5, cap:1500, retro:false }
-};
+/* ===== 季度数据（新增季度：往 QUARTERS 里加一项；某卡类别未公布就写 null） =====
+ * chase:    cats=季度类别, add=在原倍率上加的百分点（Flex 餐饮 3+4=7）, cap=合并上限
+ * discover: cats=季度类别, rate=总倍率, retro=是否可追溯
+ * extra:    不在 11 个格子里的类别（只做展示）
+ */
+const QUARTERS = [
+  { id:"2026Q4", label:"2026 Q4", start:"2026-10-01", end:"2026-12-31",
+    chase:{ cats:["groceries","dining"], extra:"美国红十字会捐款", add:4, cap:1500,
+            activate:"9/15–12/14 激活，可追溯至 10/1", note:"Flex 餐饮 7%（3%+4%），原版 Freedom 餐饮 5%；超市不含 Walmart/Target/仓储店" },
+    discover:{ cats:["dining","entertainment","utilities"], rate:5, cap:1500, retro:false,
+            activate:"可激活至 12/31，不追溯（激活后才算）" },
+    tips:{ dining:"三张季度卡额度各 $1,500：Flex(7%) → 原版 Freedom(5%) → Discover(5%) 依次刷满。" } },
+  { id:"2027Q1", label:"2027 Q1", start:"2027-01-01", end:"2027-03-31",
+    chase:{ cats:["groceries","streaming"], add:4, cap:1500,
+            activate:"12/15/2026 起可激活（截止约 3/14/2027）", note:"超市不含 Walmart/Target；流媒体为 Chase 指定的热门服务（Netflix、Disney+、Hulu、Max、Spotify、YouTube Premium/TV、Apple Music 等）" },
+    discover:null,   // 截至 2026-10-12 Discover 尚未公布
+    tips:{} },
+  { id:"2027Q2", label:"2027 Q2", start:"2027-04-01", end:"2027-06-30", chase:null, discover:null, tips:{} }
+];
 const PRESETS = { tpg:{n:"TPG估值",UR:2.05,C1:1.85,HH:0.4}, mid:{n:"折中",UR:1.5,C1:1.5,HH:0.5}, cash:{n:"现金",UR:1,C1:1,HH:0.4} };
 const CATS = [
   ["dining","🍽️","餐饮"],["groceries","🛒","超市"],["gas","⛽","加油"],["flights","✈️","旅游/机票"],
@@ -79,13 +99,13 @@ const CATS = [
   ["utilities","💡","水电话费"],["entertainment","🎬","娱乐"],["other","🧾","其他"]
 ];
 const TIPS = {
-  dining:"三张季度卡额度各自 $1,500：Flex → 原版 Freedom → Discover 依次刷满。Hilton 5x 仅限美国餐厅。",
+  dining:"Hilton 5x 仅限美国餐厅。",
   groceries:"Chase 超市不含 Walmart/Target/Costco 等仓储店。",
   gas:"实体店若能用 Samsung Wallet，可在设置中打开 → Samsung 卡 3%。",
   flights:"通过 Chase Travel 订用 CSR 8x 更高；邮轮/民宿/交通 CSR 只有 1x，用 Venture 2x。",
   hotels:"Chase Travel 订用 CSR 8x；Capital One Travel 订用 Venture 5x；希尔顿官网 Hilton 卡 7x（每点约 0.4¢）。",
-  amazon:"本季度无 Amazon 加成。", streaming:"2027 Q1 Chase 季度类别含流媒体。",
-  utilities:"先确认是否收刷卡手续费。Discover 不追溯，先激活。",
+  amazon:"本季度无 Amazon 加成。", streaming:"",
+  utilities:"先确认是否收刷卡手续费。",
   entertainment:"Capital One Entertainment 平台购票 Venture 5x。", other:"实体店能用 Samsung Wallet 时 Samsung 卡 3%。"
 };
 /* 卡片：r = 各类别总倍率；cur = 积分类型 */
@@ -101,22 +121,28 @@ const CARDS = [
 ];
 /* ===== 逻辑 ===== */
 const KEY="cardRewards.mobile.v1";
-const DEF={cat:"dining",preset:"tpg",pool:true,legacy:"freedom",actC:true,actD:true,wallet:false,owned:CARDS.map(c=>c.id)};
+const DEF={q:null,act:{},cat:"dining",preset:"tpg",pool:true,legacy:"freedom",wallet:false,owned:CARDS.map(c=>c.id)};
 let S; try{S=Object.assign({},DEF,JSON.parse(localStorage.getItem(KEY)||"{}"))}catch(e){S={...DEF}}
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
 const $=id=>document.getElementById(id);
 const f=n=>(Math.round(n*10)/10).toString();
-const today=new Date().toISOString().slice(0,10), inQ=today>=Q.start&&today<=Q.end;
-$("qlabel").textContent = inQ ? Q.label+" · 10/1–12/31" : "⚠️ 季度数据已过期，请更新";
+const today=new Date().toISOString().slice(0,10);
+const curQ = QUARTERS.find(q=>today>=q.start&&today<=q.end);
+const urlQ = new URLSearchParams(location.search).get("q");   // 例：?q=2027Q1
+if (urlQ && QUARTERS.some(q=>q.id===urlQ)) S.q = urlQ;
+let Q = QUARTERS.find(q=>q.id===S.q) || curQ || QUARTERS[QUARTERS.length-1];
+const qStatus = q => q===curQ ? "当前" : (today<q.start ? "未来" : "已过");
+const isAct = issuer => { const a=(S.act[Q.id]||{})[issuer]; return a===undefined ? true : a; };
+function setQ(id){ Q=QUARTERS.find(q=>q.id===id)||Q; S.q=Q.id; save(); render(); }
 
 function evalCard(c0,cat){
   let c=c0; if(c0.id==="freedom"&&S.legacy==="fu") c={...c0,n:c0.fu.n,base:c0.fu.base,r:c0.fu.r,q:null};
   let x = c.r[cat]!=null ? c.r[cat] : c.base, note="";
   if(c.id==="hilton"&&["dining","groceries","gas"].includes(cat)) note="仅限美国境内";
   const q=c.q&&Q[c.q];
-  if(q&&inQ&&q.cats.includes(cat)){
-    const act=c.q==="chase"?S.actC:S.actD, qx=q.rate||x+q.add;
-    if(act){x=qx; note=`Q4 季度类别 · 前 $${q.cap}`;} else note=`⚠️ 未激活（激活后 ${qx}%）`;
+  if(q&&q.cats.includes(cat)){
+    const act=isAct(c.q), qx=q.rate||x+q.add;
+    if(act){x=qx; note=`${Q.label} 季度类别 · 前 $${q.cap}`;} else note=`⚠️ 未激活（激活后 ${qx}%）`;
   }
   if(c.wallet&&S.wallet&&x<c.wallet&&cat!=="amazon"){x=c.wallet; note="用 Samsung Wallet 支付";}
   const P=PRESETS[S.preset]; let cents = c.cur==="CASH"?1 : P[c.cur];
@@ -124,7 +150,20 @@ function evalCard(c0,cat){
   const unit = (c.cur==="CASH"||(c.cur==="UR"&&c.id!=="csr"))?"%":"x";
   return {n:c.n,x,unit,cents,pct:x*cents,note};
 }
+function renderQ(){
+  $("qsel").innerHTML=QUARTERS.map(q=>`<option value="${q.id}" ${q===Q?"selected":""}>${q.label}（${qStatus(q)}${q.chase||q.discover?"":" · 未公布"}）</option>`).join("");
+  $("qlabel").textContent = Q.label+" · "+Q.start.slice(5).replace("-","/")+"–"+Q.end.slice(5).replace("-","/")+(curQ?"":" · ⚠️ 请更新季度数据");
+  const nm=k=>(CATS.find(c=>c[0]===k)||[k,"",k])[2];
+  const line=(name,d)=> d
+    ? `<div><b>${name}</b>：${d.cats.map(nm).join("、")}${d.extra?"、"+d.extra:""} ${d.rate||5}%（上限 $${d.cap}）<br><span style="color:#6b7280;font-size:12px">${d.activate}${d.note?" · "+d.note:""}</span></div>`
+    : `<div class="na"><b>${name}</b>：该季度类别尚未公布，暂按基础倍率计算</div>`;
+  $("qinfo").innerHTML = (!Q.chase&&!Q.discover)
+    ? `<div class="na">📅 <b>${Q.label}</b> 该季度类别尚未公布。下方按各卡基础/常规倍率排序；公布后刷新页面即可获取更新。</div>`
+    : line("Chase Freedom/Flex",Q.chase)+line("Discover it",Q.discover)
+      +(qStatus(Q)==="未来"?`<div style="font-size:12px;color:#6b7280;margin-top:4px">未来季度默认按“已激活”计算，可在 ⚙️ 中调整。</div>`:"");
+}
 function render(){
+  renderQ();
   $("tiles").innerHTML=CATS.map(([k,e,n])=>`<button class="tile ${k===S.cat?"on":""}" data-k="${k}"><span>${e}</span>${n}</button>`).join("");
   const rows=CARDS.filter(c=>S.owned.includes(c.id)).map(c=>evalCard(c,S.cat)).sort((a,b)=>b.pct-a.pct);
   const cat=CATS.find(c=>c[0]===S.cat);
@@ -132,7 +171,7 @@ function render(){
   const t=rows[0];
   $("rec").innerHTML=`<div class="lab">${cat[1]} ${cat[2]} · 推荐：</div><div class="name">${t.n}</div>
     <div class="rate">${f(t.x)}${t.unit}${t.unit==="x"||t.cents!==1?` × ${t.cents}¢`:""} ≈ <b>${f(t.pct)}%</b> 回报${t.note?` · ${t.note}`:""}</div>
-    ${TIPS[S.cat]?`<div class="tip">💡 ${TIPS[S.cat]}</div>`:""}`;
+    ${[Q.tips&&Q.tips[S.cat],TIPS[S.cat]].filter(Boolean).map(x=>`<div class="tip">💡 ${x}</div>`).join("")}`;
   $("list").innerHTML=rows.map((r,i)=>`<div class="item"><div class="n">${i+1}</div><div class="mid"><b>${r.n}</b><i class="${r.note.startsWith("⚠️")?"warn":""}">${f(r.x)}${r.unit}${r.note?" · "+r.note:""}</i></div><div class="pct">${f(r.pct)}%<small>${r.cents}¢/点</small></div></div>`).join("");
 }
 function settings(){
@@ -141,11 +180,12 @@ function settings(){
   $("panel").innerHTML=`<h2>设置</h2>
     <h3>积分估值（UR / Capital One / Hilton）</h3>${seg("preset",Object.entries(PRESETS).map(([k,p])=>[k,`${p.n}<br><small>${p.UR}/${p.C1}/${p.HH}¢</small>`]))}
     <h3>原版 Chase Freedom 状态</h3>${seg("legacy",[["freedom","仍是原版（季度5%）"],["fu","已转 Unlimited"]])}
-    <h3>开关</h3>${tog("actC","已激活 Chase Q4 类别")}${tog("actD","已激活 Discover Q4 类别")}${tog("wallet","能用 Samsung Wallet 支付")}${tog("pool","Freedom 积分并入 CSR（按 UR 估值）")}
+    <h3>开关</h3>${Q.chase?`<label class="tog">已激活 Chase ${Q.label} 类别<input type="checkbox" data-act="chase" ${isAct("chase")?"checked":""}></label>`:""}${Q.discover?`<label class="tog">已激活 Discover ${Q.label} 类别<input type="checkbox" data-act="discover" ${isAct("discover")?"checked":""}></label>`:""}${tog("wallet","能用 Samsung Wallet 支付")}${tog("pool","Freedom 积分并入 CSR（按 UR 估值）")}
     <h3>我持有的卡</h3>${CARDS.map(c=>`<label class="tog">${c.n}<input type="checkbox" data-own="${c.id}" ${S.owned.includes(c.id)?"checked":""}></label>`).join("")}
     <button class="close" id="closeBtn">完成</button>`;
 }
 $("tiles").addEventListener("click",e=>{const b=e.target.closest(".tile");if(b){S.cat=b.dataset.k;save();render();$("rec").scrollIntoView({behavior:"smooth",block:"start"});}});
+$("qsel").addEventListener("change",e=>setQ(e.target.value));
 $("gear").onclick=()=>{settings();$("sheet").classList.add("on");};
 $("sheet").addEventListener("click",e=>{
   if(e.target.id==="sheet"||e.target.id==="closeBtn"){$("sheet").classList.remove("on");return;}
@@ -153,6 +193,7 @@ $("sheet").addEventListener("click",e=>{
 });
 $("sheet").addEventListener("change",e=>{const t=e.target;
   if(t.dataset.tog){S[t.dataset.tog]=t.checked;}
+  if(t.dataset.act){S.act[Q.id]=Object.assign({},S.act[Q.id],{[t.dataset.act]:t.checked});}
   if(t.dataset.own){S.owned=t.checked?[...new Set([...S.owned,t.dataset.own])]:S.owned.filter(x=>x!==t.dataset.own);}
   save();render();});
 /* PWA：用页面绝对地址生成 manifest，便于“添加到主屏幕” */
