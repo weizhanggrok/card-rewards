@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>刷哪张卡</title>
+<meta name="theme-color" content="#1e3a8a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="刷哪张卡">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAB+0lEQVR42u3dsW3CQBSA4fhE5AWitFQguaZkGouMhcRE1EiMAFkgSkNHlcJC+N098n0D4PjuzwN0ArrV7voGfymWAHEgDsSBOBAH4kAciANxIA4QB+JAHIgDcSAOxIE4EAfiAHEgDsSBOBAH4kAciANxIA4QB+JAHIgDcSAOxIE4EAfiQBwgDsSBOBAH4kAciANxIA7EAXeLitc+7z9swBTrr+8q1+2q/DqkLFIkUpSRRfy6FWXoo4k4lJFrDYsy9OGtLK3GYWxkXE+TA3EgDsSBOBAH4iCZiCP7n9NhubXUT9YPo8mBpxXEgTgQB+JAHCAOxIE4EAfiQByIg8wijuz7YfTRhKcL+Fy1yYE4EAfiQByIA3EgDsSBOBAHiANxIA7mtGjtD/o9fs76+O+bi11POTnmLiPmEuJIvG368JoDcSAOxIE4EAfiQByIA5qLI+zUw/FKyskRsG3KmK65U1mbZ3IgDsSBOBAHiANxIA6SxhHw1Xf/Ssx6mhw0EIfhkW4ly0velTJSPq3oI9HqlZe/Q2U8rFvtrrXu1heiN/7vVDMOvFtBHIgDcYA4EAfiQByIA3EgDsSBOBAH4gBxIA7EgTgQB+JAHIgDcSAOEAfiQByIA3EgDsSBOBAH4gBxIA7EgTgQB+JAHIgDcSAOxAHiQByIA3EgDlpzA2K+RUik/o5vAAAAAElFTkSuQmCC">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAB+0lEQVR42u3dsW3CQBSA4fhE5AWitFQguaZkGouMhcRE1EiMAFkgSkNHlcJC+N098n0D4PjuzwN0ArrV7voGfymWAHEgDsSBOBAH4kAciANxIA4QB+JAHIgDcSAOxIE4EAfiAHEgDsSBOBAH4kAciANxIA4QB+JAHIgDcSAOxIE4EAfiQBwgDsSBOBAH4kAciANxIA7EAXeLitc+7z9swBTrr+8q1+2q/DqkLFIkUpSRRfy6FWXoo4k4lJFrDYsy9OGtLK3GYWxkXE+TA3EgDsSBOBAH4iCZiCP7n9NhubXUT9YPo8mBpxXEgTgQB+JAHCAOxIE4EAfiQByIg8wijuz7YfTRhKcL+Fy1yYE4EAfiQByIA3EgDsSBOBAHiANxIA7mtGjtD/o9fs76+O+bi11POTnmLiPmEuJIvG368JoDcSAOxIE4EAfiQByIA5qLI+zUw/FKyskRsG3KmK65U1mbZ3IgDsSBOBAHiANxIA6SxhHw1Xf/Ssx6mhw0EIfhkW4ly0velTJSPq3oI9HqlZe/Q2U8rFvtrrXu1heiN/7vVDMOvFtBHIgDcYA4EAfiQByIA3EgDsSBOBAH4gBxIA7EgTgQB+JAHIgDcSAOEAfiQByIA3EgDsSBOBAH4gBxIA7EgTgQB+JAHIgDcSAOxAHiQByIA3EgDlpzA2K+RUik/o5vAAAAAElFTkSuQmCC">
+<link rel="manifest" id="mf" href="data:application/manifest+json,%7B%22name%22%3A%22%E5%88%B7%E5%93%AA%E5%BC%A0%E5%8D%A1%22%2C%22display%22%3A%22standalone%22%7D">
+<style>
+:root{--bg:#f2f4f7;--ink:#111827;--sub:#6b7280;--acc:#2563eb;--line:#e5e7eb}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans CJK SC","Microsoft YaHei",sans-serif;font-size:16px}
+body{padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);overscroll-behavior-y:none}
+header{background:#1e3a8a;color:#fff;padding:14px 16px 12px;display:flex;align-items:center;justify-content:space-between}
+header h1{font-size:20px;margin:0}
+header small{display:block;opacity:.8;font-size:12px;font-weight:400}
+.gear{background:rgba(255,255,255,.15);border:0;color:#fff;font-size:22px;width:48px;height:48px;border-radius:12px}
+main{padding:12px;max-width:560px;margin:0 auto}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tile{border:0;background:#fff;border-radius:16px;min-height:84px;padding:10px 4px;font-size:15px;font-weight:600;color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.06);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.tile span{font-size:28px;line-height:1}
+.tile.on{background:var(--acc);color:#fff}
+.rec{background:linear-gradient(135deg,#2563eb,#1e40af);color:#fff;border-radius:18px;padding:18px;margin:14px 0 10px}
+.rec .lab{font-size:14px;opacity:.85}
+.rec .name{font-size:26px;font-weight:800;line-height:1.2;margin:4px 0}
+.rec .rate{font-size:17px}
+.rec .tip{font-size:13px;opacity:.9;margin-top:8px}
+.list{background:#fff;border-radius:16px;overflow:hidden}
+.item{display:flex;align-items:center;gap:10px;padding:14px;border-top:1px solid var(--line);min-height:64px}
+.item:first-child{border-top:0}
+.n{width:28px;height:28px;border-radius:50%;background:#e5e7eb;display:grid;place-items:center;font-weight:700;font-size:14px;flex:none}
+.item:first-child .n{background:#facc15}
+.mid{flex:1;min-width:0}.mid b{display:block;font-size:16px}
+.mid i{font-style:normal;font-size:12px;color:var(--sub)}
+.warn{color:#b45309!important}
+.pct{font-size:20px;font-weight:800;text-align:right}.pct small{display:block;font-size:12px;font-weight:400;color:var(--sub)}
+.foot{font-size:12px;color:var(--sub);text-align:center;margin:14px 0 30px;line-height:1.5}
+.sheet{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;align-items:flex-end;z-index:9}
+.sheet.on{display:flex}
+.panel{background:#fff;width:100%;max-height:88vh;overflow:auto;border-radius:20px 20px 0 0;padding:16px 16px calc(20px + env(safe-area-inset-bottom))}
+.panel h2{margin:4px 0 12px;font-size:19px}
+.panel h3{font-size:14px;color:var(--sub);margin:16px 0 6px;font-weight:600}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button,.close{flex:1;min-height:48px;border:1px solid var(--line);background:#fff;border-radius:12px;font-size:15px;color:var(--ink);padding:0 8px}
+.seg button.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+.tog{display:flex;align-items:center;justify-content:space-between;min-height:52px;border-top:1px solid var(--line);gap:10px;font-size:15px}
+.tog input{width:26px;height:26px;flex:none}
+.close{width:100%;margin-top:16px;background:var(--acc);color:#fff;border:0;font-weight:700}
+.install{display:none;background:#fef3c7;color:#92400e;border-radius:12px;padding:10px 12px;font-size:13px;margin-bottom:12px}
+</style>
+</head>
+<body>
+<header><h1>💳 刷哪张卡<small id="qlabel"></small></h1><button class="gear" id="gear" aria-label="设置">⚙️</button></header>
+<main>
+  <div class="install" id="install"></div>
+  <div class="tiles" id="tiles"></div>
+  <div class="rec" id="rec"></div>
+  <div class="list" id="list"></div>
+  <div class="foot">数据核查于 2026-10-11 · 以发卡行条款为准<br>Q4 激活：Chase 12/14 前（可追溯）· Discover 尽早（不追溯）</div>
+</main>
+<div class="sheet" id="sheet"><div class="panel" id="panel"></div></div>
+<script>
+/* ===== 季度数据（每季度改这里） ===== */
+const Q = {
+  label:"2026 Q4", start:"2026-10-01", end:"2026-12-31",
+  chase:{ cats:["dining","groceries"], add:4, cap:1500, by:"12/14", retro:true },      // + 红十字会捐款
+  discover:{ cats:["dining","entertainment","utilities"], rate:5, cap:1500, retro:false }
+};
+const PRESETS = { tpg:{n:"TPG估值",UR:2.05,C1:1.85,HH:0.4}, mid:{n:"折中",UR:1.5,C1:1.5,HH:0.5}, cash:{n:"现金",UR:1,C1:1,HH:0.4} };
+const CATS = [
+  ["dining","🍽️","餐饮"],["groceries","🛒","超市"],["gas","⛽","加油"],["flights","✈️","旅游/机票"],
+  ["hotels","🏨","酒店"],["amazon","📦","Amazon/网购"],["streaming","📺","流媒体"],["drugstore","💊","药店"],
+  ["utilities","💡","水电话费"],["entertainment","🎬","娱乐"],["other","🧾","其他"]
+];
+const TIPS = {
+  dining:"三张季度卡额度各自 $1,500：Flex → 原版 Freedom → Discover 依次刷满。Hilton 5x 仅限美国餐厅。",
+  groceries:"Chase 超市不含 Walmart/Target/Costco 等仓储店。",
+  gas:"实体店若能用 Samsung Wallet，可在设置中打开 → Samsung 卡 3%。",
+  flights:"通过 Chase Travel 订用 CSR 8x 更高；邮轮/民宿/交通 CSR 只有 1x，用 Venture 2x。",
+  hotels:"Chase Travel 订用 CSR 8x；Capital One Travel 订用 Venture 5x；希尔顿官网 Hilton 卡 7x（每点约 0.4¢）。",
+  amazon:"本季度无 Amazon 加成。", streaming:"2027 Q1 Chase 季度类别含流媒体。",
+  utilities:"先确认是否收刷卡手续费。Discover 不追溯，先激活。",
+  entertainment:"Capital One Entertainment 平台购票 Venture 5x。", other:"实体店能用 Samsung Wallet 时 Samsung 卡 3%。"
+};
+/* 卡片：r = 各类别总倍率；cur = 积分类型 */
+const CARDS = [
+  {id:"flex", n:"Freedom Flex", cur:"UR", base:1, q:"chase", r:{dining:3,drugstore:3}},
+  {id:"csr", n:"Sapphire Reserve", cur:"UR", base:1, r:{dining:3,flights:4,hotels:4}},
+  {id:"freedom", n:"Freedom（原版）", cur:"UR", base:1, q:"chase", r:{},
+   fu:{n:"Freedom Unlimited", base:1.5, r:{dining:3,drugstore:3}}},
+  {id:"hilton", n:"Hilton Amex", cur:"HH", base:3, r:{dining:5,groceries:5,gas:5}},
+  {id:"venture", n:"Venture", cur:"C1", base:2, r:{}},
+  {id:"discover", n:"Discover it", cur:"CASH", base:1, q:"discover", r:{}},
+  {id:"samsung", n:"Samsung Galaxy", cur:"CASH", base:1, r:{streaming:2}, wallet:3}
+];
+/* ===== 逻辑 ===== */
+const KEY="cardRewards.mobile.v1";
+const DEF={cat:"dining",preset:"tpg",pool:true,legacy:"freedom",actC:true,actD:true,wallet:false,owned:CARDS.map(c=>c.id)};
+let S; try{S=Object.assign({},DEF,JSON.parse(localStorage.getItem(KEY)||"{}"))}catch(e){S={...DEF}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const $=id=>document.getElementById(id);
+const f=n=>(Math.round(n*10)/10).toString();
+const today=new Date().toISOString().slice(0,10), inQ=today>=Q.start&&today<=Q.end;
+$("qlabel").textContent = inQ ? Q.label+" · 10/1–12/31" : "⚠️ 季度数据已过期，请更新";
+
+function evalCard(c0,cat){
+  let c=c0; if(c0.id==="freedom"&&S.legacy==="fu") c={...c0,n:c0.fu.n,base:c0.fu.base,r:c0.fu.r,q:null};
+  let x = c.r[cat]!=null ? c.r[cat] : c.base, note="";
+  if(c.id==="hilton"&&["dining","groceries","gas"].includes(cat)) note="仅限美国境内";
+  const q=c.q&&Q[c.q];
+  if(q&&inQ&&q.cats.includes(cat)){
+    const act=c.q==="chase"?S.actC:S.actD, qx=q.rate||x+q.add;
+    if(act){x=qx; note=`Q4 季度类别 · 前 $${q.cap}`;} else note=`⚠️ 未激活（激活后 ${qx}%）`;
+  }
+  if(c.wallet&&S.wallet&&x<c.wallet&&cat!=="amazon"){x=c.wallet; note="用 Samsung Wallet 支付";}
+  const P=PRESETS[S.preset]; let cents = c.cur==="CASH"?1 : P[c.cur];
+  if(c.cur==="UR"&&c.id!=="csr"&&!S.pool) cents=1;
+  const unit = (c.cur==="CASH"||(c.cur==="UR"&&c.id!=="csr"))?"%":"x";
+  return {n:c.n,x,unit,cents,pct:x*cents,note};
+}
+function render(){
+  $("tiles").innerHTML=CATS.map(([k,e,n])=>`<button class="tile ${k===S.cat?"on":""}" data-k="${k}"><span>${e}</span>${n}</button>`).join("");
+  const rows=CARDS.filter(c=>S.owned.includes(c.id)).map(c=>evalCard(c,S.cat)).sort((a,b)=>b.pct-a.pct);
+  const cat=CATS.find(c=>c[0]===S.cat);
+  if(!rows.length){$("rec").innerHTML='<div class="name">请在 ⚙️ 中选择你的卡</div>';$("list").innerHTML="";return;}
+  const t=rows[0];
+  $("rec").innerHTML=`<div class="lab">${cat[1]} ${cat[2]} · 推荐：</div><div class="name">${t.n}</div>
+    <div class="rate">${f(t.x)}${t.unit}${t.unit==="x"||t.cents!==1?` × ${t.cents}¢`:""} ≈ <b>${f(t.pct)}%</b> 回报${t.note?` · ${t.note}`:""}</div>
+    ${TIPS[S.cat]?`<div class="tip">💡 ${TIPS[S.cat]}</div>`:""}`;
+  $("list").innerHTML=rows.map((r,i)=>`<div class="item"><div class="n">${i+1}</div><div class="mid"><b>${r.n}</b><i class="${r.note.startsWith("⚠️")?"warn":""}">${f(r.x)}${r.unit}${r.note?" · "+r.note:""}</i></div><div class="pct">${f(r.pct)}%<small>${r.cents}¢/点</small></div></div>`).join("");
+}
+function settings(){
+  const seg=(key,opts)=>`<div class="seg">${opts.map(([v,l])=>`<button data-set="${key}" data-v="${v}" class="${S[key]===v?"on":""}">${l}</button>`).join("")}</div>`;
+  const tog=(key,l)=>`<label class="tog">${l}<input type="checkbox" data-tog="${key}" ${S[key]?"checked":""}></label>`;
+  $("panel").innerHTML=`<h2>设置</h2>
+    <h3>积分估值（UR / Capital One / Hilton）</h3>${seg("preset",Object.entries(PRESETS).map(([k,p])=>[k,`${p.n}<br><small>${p.UR}/${p.C1}/${p.HH}¢</small>`]))}
+    <h3>原版 Chase Freedom 状态</h3>${seg("legacy",[["freedom","仍是原版（季度5%）"],["fu","已转 Unlimited"]])}
+    <h3>开关</h3>${tog("actC","已激活 Chase Q4 类别")}${tog("actD","已激活 Discover Q4 类别")}${tog("wallet","能用 Samsung Wallet 支付")}${tog("pool","Freedom 积分并入 CSR（按 UR 估值）")}
+    <h3>我持有的卡</h3>${CARDS.map(c=>`<label class="tog">${c.n}<input type="checkbox" data-own="${c.id}" ${S.owned.includes(c.id)?"checked":""}></label>`).join("")}
+    <button class="close" id="closeBtn">完成</button>`;
+}
+$("tiles").addEventListener("click",e=>{const b=e.target.closest(".tile");if(b){S.cat=b.dataset.k;save();render();$("rec").scrollIntoView({behavior:"smooth",block:"start"});}});
+$("gear").onclick=()=>{settings();$("sheet").classList.add("on");};
+$("sheet").addEventListener("click",e=>{
+  if(e.target.id==="sheet"||e.target.id==="closeBtn"){$("sheet").classList.remove("on");return;}
+  const b=e.target.closest("[data-set]"); if(b){S[b.dataset.set]=b.dataset.v;save();settings();render();}
+});
+$("sheet").addEventListener("change",e=>{const t=e.target;
+  if(t.dataset.tog){S[t.dataset.tog]=t.checked;}
+  if(t.dataset.own){S.owned=t.checked?[...new Set([...S.owned,t.dataset.own])]:S.owned.filter(x=>x!==t.dataset.own);}
+  save();render();});
+/* PWA：用页面绝对地址生成 manifest，便于“添加到主屏幕” */
+(function(){try{
+  const here=location.href.split("#")[0];
+  const m={name:"刷哪张卡",short_name:"刷哪张卡",lang:"zh-CN",start_url:here,scope:here.replace(/[^/]*$/,""),display:"standalone",
+    background_color:"#f2f4f7",theme_color:"#1e3a8a",
+    icons:[{src:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAB+0lEQVR42u3dsW3CQBSA4fhE5AWitFQguaZkGouMhcRE1EiMAFkgSkNHlcJC+N098n0D4PjuzwN0ArrV7voGfymWAHEgDsSBOBAH4kAciANxIA4QB+JAHIgDcSAOxIE4EAfiAHEgDsSBOBAH4kAciANxIA4QB+JAHIgDcSAOxIE4EAfiQBwgDsSBOBAH4kAciANxIA7EAXeLitc+7z9swBTrr+8q1+2q/DqkLFIkUpSRRfy6FWXoo4k4lJFrDYsy9OGtLK3GYWxkXE+TA3EgDsSBOBAH4iCZiCP7n9NhubXUT9YPo8mBpxXEgTgQB+JAHCAOxIE4EAfiQByIg8wijuz7YfTRhKcL+Fy1yYE4EAfiQByIA3EgDsSBOBAHiANxIA7mtGjtD/o9fs76+O+bi11POTnmLiPmEuJIvG368JoDcSAOxIE4EAfiQByIA5qLI+zUw/FKyskRsG3KmK65U1mbZ3IgDsSBOBAHiANxIA6SxhHw1Xf/Ssx6mhw0EIfhkW4ly0velTJSPq3oI9HqlZe/Q2U8rFvtrrXu1heiN/7vVDMOvFtBHIgDcYA4EAfiQByIA3EgDsSBOBAH4gBxIA7EgTgQB+JAHIgDcSAOEAfiQByIA3EgDsSBOBAH4gBxIA7EgTgQB+JAHIgDcSAOxAHiQByIA3EgDlpzA2K+RUik/o5vAAAAAElFTkSuQmCC",sizes:"180x180",type:"image/png"},{src:"data:image/png;base64,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",sizes:"512x512",type:"image/png",purpose:"any"}]};
+  if(location.protocol.startsWith("http")) $("mf").href=URL.createObjectURL(new Blob([JSON.stringify(m)],{type:"application/manifest+json"}));
+  const standalone=matchMedia("(display-mode: standalone)").matches||navigator.standalone;
+  if(!standalone&&/iPhone|iPad|Android/i.test(navigator.userAgent)){
+    $("install").style.display="block";
+    $("install").textContent=/iPhone|iPad/.test(navigator.userAgent)?"📲 安装：Safari 点「分享」→「添加到主屏幕」":"📲 安装：浏览器菜单 ⋮ →「添加到主屏幕 / 安装应用」";
+  }
+}catch(e){}})();
+render();
+</script>
+</body>
+</html>
