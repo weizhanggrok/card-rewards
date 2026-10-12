@@ -54,7 +54,6 @@
 - **Chase Freedom/Flex**：超市（不含 Walmart、Target）和热门流媒体（Netflix、Disney+、Hulu、Max、Spotify、YouTube Premium/TV、Apple Music 等），5%，合并上限 $1,500，12/15/2026 开始可激活。Chase 官网日历已列出这两类。激活截止约 3/14/2027，这个日期来自 AwardWallet，Chase 官方尚未确认。
   - https://creditcards.chase.com/cash-back-credit-cards/freedom/flex （官方日历“JAN-MAR 2027”）
   - https://thepointsguy.com/credit-cards/activate-chase-freedom-5x-earnings/
-  - https://www.doctorofcredit.com/chase-doing-automatic-product-change-for-some-original-freedom-cardholders-to-freedom-unlimited/ （相关：原版 Freedom 自动转换）
   - https://www.doctorofcredit.com/chase-freedom-q1-2027-categories-grocery-streaming/
   - https://awardwallet.com/credit-cards/chase-ultimate-rewards/chase-freedom-categories/
 - **Discover it**：截至 2026-10-12 **尚未公布**，Discover 官方日历页仍无法访问。网上出现的“2027 日历”来自内容农场，只是预测，没有采用。
