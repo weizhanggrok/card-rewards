@@ -50,11 +50,29 @@
 5. **[假设] Chase 季度 5% 的计算方式**：按 Chase 新闻稿的“原有倍率 + 4%”处理（Flex 餐饮 3%+4%=7%，超市 1%+4%=5%）。超过 $1,500 后回落到原有倍率。
 6. **[假设] CSR 订希尔顿**：工具按“酒店直订”4x 计算，具体以 Chase 的商户分类为准。
 
-## 2027 Q1（1/1–3/31）— 2026-10-12 补充
-- **Chase Freedom/Flex**：超市（不含 Walmart、Target）和热门流媒体（Netflix、Disney+、Hulu、Max、Spotify、YouTube Premium/TV、Apple Music 等），5%，合并上限 $1,500，12/15/2026 开始可激活。Chase 官网日历已列出这两类。激活截止约 3/14/2027，这个日期来自 AwardWallet，Chase 官方尚未确认。
-  - https://creditcards.chase.com/cash-back-credit-cards/freedom/flex （官方日历“JAN-MAR 2027”）
+## 2027 Q1（1/1–3/31）— 核查 2026-11-09
+- **Chase Freedom/Flex**：超市（不含 Walmart、Target）和 Top Streaming Services，5%，合并上限 $1,500。激活自 **2026-12-15** 起。Chase 官网未写明激活截止日（earnrate 2026-11-07 亦注明“hasn't given a deadline”）；过往季度常为季度中旬前。流媒体商户以 Chase RewardsCategoryFAQs 名单为准（earnrate 摘录：Netflix、Disney+、Hulu、Max、Apple Music/TV、Spotify、YouTube Premium/TV、Paramount+、Peacock、ESPN、Fubo、Pandora、SiriusXM、Sling TV、Showtime、Fandango at Home 等）。
+  - https://creditcards.chase.com/cash-back-credit-cards/freedom/flex （官方日历 JAN-MAR 2027）
+  - https://earnrate.dev/quarterly/2027-q1 （2026-11-07 更新，引用 Chase 官网）
+  - https://www.cnbc.com/select/chase-freedom-cash-back-calendar/
   - https://thepointsguy.com/credit-cards/activate-chase-freedom-5x-earnings/
   - https://www.doctorofcredit.com/chase-freedom-q1-2027-categories-grocery-streaming/
-  - https://awardwallet.com/credit-cards/chase-ultimate-rewards/chase-freedom-categories/
-- **Discover it**：截至 2026-10-12 **尚未公布**，Discover 官方日历页仍无法访问。网上出现的“2027 日历”来自内容农场，只是预测，没有采用。
-- **2027 Q2 及以后**：Chase 和 Discover 均未公布。
+- **Discover it**：**仍未公布**。截至 2026-11-09，NerdWallet 仅列 2026 全年日历；earnrate 明确写 “aren't in earnrate's data yet”；Doctor of Credit 无 Q1 2027 Discover 帖。内容农场“2027 日历”未采用。Discover 通常约提前一个月公布（NerdWallet）。
+  - https://earnrate.dev/quarterly/2027-q1
+  - https://www.nerdwallet.com/credit-cards/learn/current-credit-card-bonus-categories
+
+## 2027 Q2（4/1–6/30）— 核查 2026-11-09
+- Chase 官网仅写 **Coming Soon**，激活起始日 **2027-03-15**；类别未公布。网上关于“继续超市”的传言（如 Points Wire）未核实，未写入应用。
+  - https://creditcards.chase.com/cash-back-credit-cards/freedom/flex
+- Discover：未公布。
+
+## 各卡倍率复核（2026-11-09）
+自 2026-10-12 以来，下列七张卡的**常规赚取倍率未见变化**（仍以发卡行页面为准）：
+- Freedom Flex：5% Chase Travel / 3% 餐饮·药店 / 1% 其他；无外币手续费（此前已生效）。
+- CSR：8x Chase Travel / 4x 直订机票·酒店 / 3x 餐饮 / 1x 其他。
+- 原版 Freedom：部分账户自动转 Freedom Unlimited 通知称 **2026-11-20 前**完成；今日为 11/9，仍属进行中，设置页可切换。
+- Hilton Honors Amex 无年费：7x / 5x 美餐·美超·美油 / 3x。
+- Venture：2x 全额；Capital One Travel 酒店/民宿/租车 5x。
+- Discover it：季度 5% + 1%；迁移至 Capital One 管理中，倍率不变。
+- Samsung Galaxy Card：5% 三星直购 / 3% Samsung Wallet / 2% 流媒体 / 1% 其他。
+
