@@ -97,3 +97,17 @@
   - https://awardlocker.com/blog/credit-card-shopping-portals-explained
 
 季度日历来源仍见上文 2026 Q4 / 2027 Q1 各节。Hilton 白卡倍率：https://www.hilton.com/en/hilton-honors/credit-cards/
+
+## Amazon（单独类别，核查 2026-11-13）
+- **本季 / 下季无加成：** 2026 Q4 与已公布的 2027 Q1，Freedom Flex / 原版 Freedom 与 Discover it 都没有 Amazon 5%。Flex 上次 Amazon+Whole Foods 是 2026 Q2；Discover 2025 Q4 曾有 Amazon.com，2026 Q4 没有。2027 Q2 尚未公布。
+  - https://creditcards.chase.com/cash-back-credit-cards/freedom/flex
+  - https://media.chase.com/news/chase-freedom-2026-q2-categories （Q2 2026 官方范围：amazon.com 商品、数字下载、Amazon.com Gift Cards、Amazon Fresh、Prime 订阅、第三方卖家；不含 Amazon Pay、海外 Amazon 站点等）
+- **赚取：** 与其他无加成网购相同，Venture 2x 通常最高。Hilton 白卡仍为 3x 其他消费（不是 Surpass 的 4x 线上零售）。
+- **用积分在 Amazon 结账（兑现价值差，以结账页为准，发行方可改）：**
+  - Chase UR Shop with Points：每点 $0.008（1,000 点=$8），低于兑现约 1¢。https://www.amazon.com/Shop-Points-Chase-Ultimate-Rewards/dp/B07H7VN1VQ
+  - Discover：$1 现金返还 = Amazon 上 $1。https://www.amazon.com/Discover-Shop-With-Points/dp/B07GL9L8D7
+  - 用户持有的是 Hilton 白卡（Hilton 积分），不是 Amex Membership Rewards。MR 在 Amazon 常见约 0.7¢/点，同样不划算。
+- **Amazon Prime Visa** 不在用户 7 张卡内，常有 Amazon 专属加成，仅作对照，未写入排序。
+- **Whole Foods：** 作为超市，本季和 Q1 2027 的 Chase 超市 5% 一般适用（实体店/官网）。不要和 Amazon.com 订单混为一谈。
+- **Amazon Fresh：** 编码不稳定（有数据点记成超市，也有例外），以账单为准，未按超市 5% 自动计算。
+- **礼品卡：** 仅在 Amazon 本身是季度类别时，Chase 曾明确把 Amazon.com Gift Cards 计入该加成（见 2026 Q2 新闻稿）。本季在 amazon.com 买礼品卡只按基础倍率。

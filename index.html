@@ -109,7 +109,8 @@ const CATS = [
   {k:"gas",e:"⛽",n:"加油",g:"日常",kw:"加油 油站 gas shell chevron ev 充电"},
   {k:"drugstore",e:"💊",n:"药店",g:"日常",kw:"药店 cvs walgreens 药房 drugstore pharmacy rite aid"},
   {k:"utilities",e:"💡",n:"水电话费",g:"日常",kw:"水电 电费 网费 话费 utilities internet phone verizon comcast"},
-  {k:"online",e:"📦",n:"网购平台",g:"购物",kw:"网购 网上 线上 online amazon 亚马逊 shein temu aliexpress 速卖通 ebay walmart.com target.com walmart target costco.com costco 沃尔玛 塔吉特 好市多 paypal"},
+  {k:"amazon",e:"📦",n:"Amazon",g:"购物",kw:"amazon 亚马逊 amazon.com amazon fresh prime amazon pay 礼品卡 gift card audible kindle"},
+  {k:"online",e:"🛒",n:"网购平台",g:"购物",kw:"网购 网上 线上 online shein temu aliexpress 速卖通 ebay walmart.com target.com walmart target costco.com costco 沃尔玛 塔吉特 好市多 paypal"},
   {k:"apparel",e:"👕",n:"服饰/鞋包",g:"购物",kw:"服饰 衣服 鞋 包 fashion apparel uniqlo 优衣库 zara h&m hm gap old navy lululemon nike adidas abercrombie revolve ssense farfetch banana republic athleta nordstrom rack 除外见百货"},
   {k:"dept",e:"🏬",n:"百货商场",g:"购物",kw:"百货 商场 department macy macys 梅西 nordstrom 诺德斯特龙 nordstrom rack kohl kohls tj maxx tjmaxx marshalls 马歇尔 bloomingdales 布鲁明戴尔 dillards jcpenney saks"},
   {k:"beauty",e:"💄",n:"美妆护肤",g:"购物",kw:"美妆 护肤 化妆品 beauty skincare sephora 丝芙兰 ulta 雅诗兰黛 estee lauder esteelauder clinique 倩碧 lancome 兰蔻 la mer origins bluemercury 品牌官网"},
@@ -122,11 +123,12 @@ const CATS = [
 const STACK = "下单前可叠加（比例不固定、先查再买）：Chase Offers / Amex Offers / Capital One Offers（先激活再用对应卡）；购物门户只选一个——Shop through Chase（Freedom/CSR 可再叠加卡积分）、Capital One Shopping 或 Rakuten（兑现或转 Amex MR）。两个门户不能叠。";
 const TIPS = {
   dining:"Hilton 5x 仅限美国餐厅。",
-  groceries:"Chase 超市不含 Walmart/Target/Costco 等仓储店。在这些店买菜按「网购平台/其他」的基础倍率，没有季度 5%。",
+  groceries:"Chase 超市不含 Walmart/Target/Costco 等仓储店（本季/下季仍排除）。Whole Foods 实体店/官网一般算超市，可走本季和 Q1 的 Chase 5%。Amazon Fresh 编码不稳定，见 Amazon 类别。",
   gas:"实体店若能用 Samsung Wallet，可在设置中打开 → Samsung 卡 3%。",
   flights:"通过 Chase Travel 订用 CSR 8x 更高；邮轮/民宿/交通 CSR 只有 1x，用 Venture 2x。",
   hotels:"Chase Travel 订用 CSR 8x；Capital One Travel 订用 Venture 5x；希尔顿官网 Hilton 卡 7x（每点约 0.4¢）。",
-  online:"Q4 2026 与 Q1 2027 均无 Amazon/PayPal/网购平台季度加成（Flex 上次 Amazon 5% 是 2026 Q2）。Walmart/Target 买菜也不算 Chase 超市。Costco.com 通常只收 Visa（CSR/Venture/Samsung；Flex 是 Mastercard、Hilton 是 Amex、Discover 可能无法用）。线上走 PayPal 常记成支付平台，不会变成商店类别。"+STACK,
+  amazon:"Q4 2026 与 Q1 2027 均无 Amazon 季度 5%（Freedom/Flex 上次是 2026 Q2；Discover 2025 Q4 有过 Amazon，本季没有）。普通 amazon.com 订单按基础倍率。不要用 Chase UR 在 Amazon「积分支付」：官网为每点 $0.008（1,000 点=$8），低于兑现 1¢，更低于转点估值。Discover 现金在 Amazon 兑是 $1 兑 $1，并不更亏但也不更赚。用户没有 Amazon Prime Visa（该卡常有 Amazon 加成，仅作对照）。Whole Foods 请走「超市」（本季/Q1 Chase 5%）；Amazon Fresh 有时记成超市、有时不是，以账单为准。在 amazon.com 买 Amazon 礼品卡本季只算基础倍率。Amazon Pay 在第三方网站即使亚马逊加成季通常也不算。"+STACK,
+  online:"SHEIN、Temu、AliExpress、eBay、Walmart.com、Target.com 等。Amazon 请点「Amazon」类别。本季与 Q1 无这些平台的季度加成。Walmart/Target 买菜不算 Chase 超市。Costco.com 通常只收 Visa。线上走 PayPal 常记成支付平台。"+STACK,
   apparel:"服装专卖店（Nike、Zara、Uniqlo 等）不属于 Chase「百货」类别；本季与下季也没有服饰加成，按基础倍率。"+STACK,
   dept:"Q4 2026 / Q1 2027 均无「百货」季度类别（Chase 上次百货是 2025 Q4）。官网购物一般按百货编码；TJ Maxx/Marshalls 多为折扣店，不一定算百货。丝芙兰等美妆专卖不算百货。"+STACK,
   beauty:"丝芙兰、Ulta、品牌官网（雅诗兰黛/倩碧等）通常编码为化妆品店，不是药店，Freedom Flex 的 3% 药店一般不适用（以账单编码为准）。本季与下季无美妆加成。"+STACK,
@@ -174,7 +176,7 @@ function evalCard(c0,cat){
     const act=isAct(c.q), qx=q.rate||x+q.add;
     if(act){x=qx; note=`${Q.label} 季度类别 · 前 $${q.cap}`;} else note=`⚠️ 未激活（激活后 ${qx}%）`;
   }
-  if(c.wallet&&S.wallet&&x<c.wallet){x=c.wallet; note=(["online","apparel","dept","beauty"].includes(cat)?"用 Samsung Wallet（线上是否算 3% 未核实）":"用 Samsung Wallet 支付");}
+  if(c.wallet&&S.wallet&&x<c.wallet){x=c.wallet; note=(["amazon","online","apparel","dept","beauty"].includes(cat)?"用 Samsung Wallet（线上是否算 3% 未核实）":"用 Samsung Wallet 支付");}
   const P=PRESETS[S.preset]; let cents = c.cur==="CASH"?1 : P[c.cur];
   if(c.cur==="UR"&&c.id!=="csr"&&!S.pool) cents=1;
   const unit = (c.cur==="CASH"||(c.cur==="UR"&&c.id!=="csr"))?"%":"x";
