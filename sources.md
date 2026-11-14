@@ -76,3 +76,24 @@
 - Discover it：季度 5% + 1%；迁移至 Capital One 管理中，倍率不变。
 - Samsung Galaxy Card：5% 三星直购 / 3% Samsung Wallet / 2% 流媒体 / 1% 其他。
 
+
+## 网购、百货、服饰、美妆（核查 2026-11-13）
+本季（2026 Q4）与已公布的 2027 Q1 **都没有** 百货、Amazon、PayPal、网购平台、服饰或美妆的季度 5% 类别。上述消费按各卡基础/常规倍率：
+- Capital One Venture：2x（默认 TPG 1.85¢ ≈ 3.7%）通常最高
+- CSR：1x（UR 2.05¢ ≈ 2.05%）
+- Freedom Flex / 原版 Freedom：1%（若积分并入 CSR 则按 UR 估值）；已转 Unlimited 则为 1.5%
+- Hilton Honors **无年费白卡**：其他消费 3x（≈1.2%）。**4x 美国线上零售是 Surpass（年费卡），不是白卡**
+- Discover it：1%（本季类别为餐厅/娱乐/公用事业）
+- Samsung Galaxy Card：1%；Samsung Wallet 3% 是否覆盖线上结账 **未核实**
+
+类别与编码说明（不以猜测当作倍率）：
+- Chase 药店定义：以处方药/OTC 为主的商户；化妆品专卖通常不算。https://www.chase.com/personal/credit-cards/rewards-category-faq
+- Sephora / Ulta 通常为化妆品店（MCC 5977），不是药店；Flex 3% 药店一般不适用。Ulta 编码参考 https://parsetx.dev/lookup/ulta-beauty
+- Chase「百货」包含商场官网，不含超级中心、折扣店、专卖店（鞋服美妆等）和纯线上综合市场。TJ Maxx/Marshalls 多为折扣店，不一定算百货。同上 FAQ。
+- Walmart/Target 被明确排除在 Chase 超市之外；在这些店买日用/服饰按基础倍率。
+- 线上经 PayPal 付款，交易常按支付平台而非商店类别入账；本季这些商店也没有季度加成。Chase FAQ：第三方支付账户/数字钱包若未按该类别处理，则不计入奖励类别。
+- 可叠加但比例不固定、不要写死数字：Chase Offers、Amex Offers、Capital One Offers（需激活并用对应卡）；购物门户三选一——Shop through Chase（与卡积分可叠）、Capital One Shopping、Rakuten（兑现或转 Amex MR）。两个门户通常不能同时计入。
+  - https://www.chase.com/personal/credit-cards/education/rewards-benefits/what-is-shop-through-chase （若页面改名，以登录后 Ultimate Rewards → Shop & earn 为准）
+  - https://awardlocker.com/blog/credit-card-shopping-portals-explained
+
+季度日历来源仍见上文 2026 Q4 / 2027 Q1 各节。Hilton 白卡倍率：https://www.hilton.com/en/hilton-honors/credit-cards/
