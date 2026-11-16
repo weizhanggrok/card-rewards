@@ -111,3 +111,23 @@
 - **Whole Foods：** 作为超市，本季和 Q1 2027 的 Chase 超市 5% 一般适用（实体店/官网）。不要和 Amazon.com 订单混为一谈。
 - **Amazon Fresh：** 编码不稳定（有数据点记成超市，也有例外），以账单为准，未按超市 5% 自动计算。
 - **礼品卡：** 仅在 Amazon 本身是季度类别时，Chase 曾明确把 Amazon.com Gift Cards 计入该加成（见 2026 Q2 新闻稿）。本季在 amazon.com 买礼品卡只按基础倍率。
+
+## Best Buy / 电子产品（核查 2026-11-16）
+- **季度类别：** 2026 Q4 与已公布的 2027 Q1，Freedom Flex / 原版 Freedom 与 Discover it 都没有 Best Buy 或电子产品商店 5%。按各卡基础倍率，Venture 2x 通常最高。
+- **卡片绑定优惠（定向，必须以用户 App 为准）：**
+  - Amex Offers（可能出现在 Hilton 白卡上，不保证）：满 $250 返 $25 账单抵扣，截止 2026-12-31；需先登记；仅限美国 Best Buy 门店或 BestBuy.com；不包括 Outlet、Business、独立 Pacific Sales/Yardbird、礼品卡及第三方代购。来源：Doctor of Credit，2026-11-03 更新。https://www.doctorofcredit.com/amex-offers-best-buy-spend-250-get-25-statement-credit-3/
+  - Chase Offers：核查日未见 DoC 或发卡行页面报道的现行 Best Buy 优惠。此前门店 10%（约至 2026-07-31）已过期。https://www.doctorofcredit.com/targeted-chase-offers-get-10-back-at-best-buy-up-to-30-cash-back/
+  - Discover Deals：核查日未见可靠来源报道的现行 Best Buy 优惠。
+- **购物门户（比例会变，常有大量排除项，下单前看当日页面；两个门户不能叠）：**
+  - Rakuten Best Buy 页（2026-11 抓取）写 “Up to 8% Cash Back”，排除苹果产品、多数笔记本/台式、游戏机、礼品卡等。https://www.rakuten.com/shop/bestbuy.com
+  - Capital One Shopping 公开优惠页（2026-11-16 抓取）显示 0.5% Rewards（兑礼品卡，非现金），排除项类似。https://capitaloneshopping.com/s/bestbuy.com/coupon
+  - Doctor of Credit 2026-11-06 报道 Capital One Shopping 15%（奖励上限 $1,000，兑礼品卡）以及登录后 Capital One Offers 8%。该促销可能已结束或仅定向，须以当日门户/App 为准。https://www.doctorofcredit.com/capital-one-shopping-15-back-at-best-buy/
+  - Shop through Chase：Chase 官方说明 Best Buy 是 Shop and Earn 合作商家，额外 UR 可与卡积分叠加；具体倍率需登录查看。第三方 CheckBeforeYouShop 记录 Freedom UR 在 2026-11-06 为 7 点/$（此前在 7–8 点之间波动）。https://www.chase.com/personal/credit-cards/education/basics/using-chase-shopping-portal-to-earn-points  https://checkbeforeyoushop.com/m/best-buy/history
+- **购买保障 / 延保（电子产品相关，细节与排除项以各卡 Guide to Benefits 为准）：**
+  - CSR：购买保障 120 天，损坏或盗窃，最高 $10,000/件；延保在符合条件的≤3 年美国制造商保修上再延 1 年，最高 $10,000/件、$50,000/账户。另有退货保障（90 天，最高 $500/件）。https://www.chase.com/personal/credit-cards/education/basics/extended-warranty-protection-with-chase-sapphire
+  - Freedom Flex：购买保障 120 天，最高 $500/件；延保在符合条件的≤3 年美国制造商保修上再延 1 年。https://www.chase.com/personal/credit-cards/freedom/flex
+  - Venture：Capital One 说明 Venture（Visa）含延保；期限与赔付上限见该卡权益手册。官网帮助页未在此次核查中给出明确的购买保障。https://www.capitalone.com/help-center/credit-cards/extended-warranty-benefits/
+  - Hilton Honors 无年费白卡：官方权益页列有购买保障（购买起最长 90 天，意外损坏或盗窃）以及最多 1 年延保；具体额度须看该卡政策，此次未在公开条款页确认美元上限。https://www.americanexpress.com/en-us/account/get-started/hiltonhonors/uncover-your-benefits
+  - Discover it：此次未在现行权益说明中看到购买保障或延保（Discover 曾于 2018 年取消过此类保障）。
+  - Samsung Galaxy Card：未见可靠的电子产品购买保障说明，未写入比较。
+  - 原版 Freedom / 已转 Unlimited：请查该卡当前 Guide to Benefits，未必与 Flex 相同。
